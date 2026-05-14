@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --background: #020617; /* Deep Slate 950 */
+  --foreground: #f8fafc;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
