@@ -1,61 +1,13 @@
-import ProjectCard from "@/components/ProjectCard";
 import CertificationCard from "@/components/CertificationCard";
+import ContactForm from "@/components/ContactForm";
 import TechStackVisualizer from "@/components/TechStackVisualizer";
 import AnimatedSection from "@/components/AnimatedSection";
+import ProjectGrid from "@/components/ProjectGrid";
+import { certifications, projects, researchFocus, technologies } from "@/data/portfolio";
 
 export default function Home() {
-  const certifications = [
-    { title: "IBM - Introduction to Artificial Intelligence (AI)", date: "March 2026" },
-    { title: "IBM - Generative AI: Introduction and Applications", date: "March 2026" },
-    { title: "IBM - Generative AI: Prompt Engineering Basics", date: "April 2026" },
-    { title: "IBM - AI Foundations for Everyone", date: "April 2026" },
-    { title: "IBM - Exploratory Data Analysis for Machine Learning", date: "April 2026" },
-    { title: "IBM - Supervised Machine Learning: Regression", date: "April 2026" },
-    { title: "IBM - Unsupervised Machine Learning", date: "April 2026" },
-    { title: "IBM - Deep Learning and Reinforcement Learning", date: "April 2026" },
-    { title: "IBM - IBM Machine Learning", date: "April 2026" },
-    { title: "Google - Technical Support Fundamentals", date: "April 2026" },
-    { title: "Google - The Bits and Bytes of Computer Networking", date: "April 2026" },
-    { title: "Google - Operating Systems and You: Becoming a Power User", date: "April 2026" },
-    { title: "Google - System Administration and IT Infrastructure", date: "April 2026" },
-    { title: "Google - IT Security: Defense against the digital dark arts", date: "April 2026" },
-    { title: "Google - Accelerate Your Job Search with AI", date: "April 2026" },
-    { title: "Google IT Support Professional", date: "April 2026" },
-    { title: "NeuralSeek Certification", date: "June 2025" },
-    { title: "NeuralSeek Multi-Tier AI Agent Architecture", date: "July 2025" },
-    { title: "BCG GenAI Job Simulation", date: "May 2025" },
-    { title: "Electronic Arts Software Engineering Virtual Program", date: "May 2025" },
-  ];
-
-  const technologies = [
-    { name: "Python", category: "Languages" },
-    { name: "Java", category: "Languages" },
-    { name: "JavaScript/TypeScript", category: "Languages" },
-    { name: "SQL", category: "Languages" },
-    { name: "HTML/CSS", category: "Languages" },
-    { name: "PyTorch", category: "ML & Data Science" },
-    { name: "TensorFlow", category: "ML & Data Science" },
-    { name: "Pandas", category: "ML & Data Science" },
-    { name: "Scikit-Learn", category: "ML & Data Science" },
-    { name: "NLTK", category: "ML & Data Science" },
-    { name: "Matplotlib", category: "ML & Data Science" },
-    { name: "React.js", category: "Web & Backend" },
-    { name: "Next.js", category: "Web & Backend" },
-    { name: "Flask", category: "Web & Backend" },
-    { name: "Node.js", category: "Web & Backend" },
-    { name: "REST APIs", category: "Web & Backend" },
-    { name: "SQLite", category: "Databases" },
-    { name: "MySQL", category: "Databases" },
-    { name: "PostgreSQL", category: "Databases" },
-    { name: "Git", category: "Tools & Platforms" },
-    { name: "Docker", category: "Tools & Platforms" },
-    { name: "GitHub", category: "Tools & Platforms" },
-    { name: "Jupyter Notebook", category: "Tools & Platforms" },
-    { name: "Tkinter", category: "Tools & Platforms" },
-  ];
-
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-black via-slate-900 to-black font-sans text-white">
+    <div className="portfolio-shell flex flex-col min-h-screen bg-gradient-to-b from-black via-slate-900 to-black font-sans text-white">
       <main className="flex flex-col w-full max-w-6xl mx-auto py-20 px-8">
         
         <AnimatedSection>
@@ -83,9 +35,12 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="flex gap-4 pt-6">
+            <div className="flex flex-wrap gap-4 pt-6">
               <a href="mailto:evscortez1212@gmail.com" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50">
                 Get In Touch
+              </a>
+              <a href="/Evans-Cortez-Resume.pdf" className="px-6 py-3 bg-slate-900/60 border border-blue-500/40 hover:border-blue-400 rounded-lg font-semibold transition-all duration-300">
+                Download Resume
               </a>
               <a href="https://linkedin.com/in/evans-cortez" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-blue-500 rounded-lg font-semibold transition-all duration-300">
                 LinkedIn
@@ -153,50 +108,41 @@ export default function Home() {
             <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-12 pb-4 border-b border-slate-800">
               Featured Projects
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <ProjectCard 
-                title="Personal Finance Tracker"
-                description="Full-stack finance management system with CLI, desktop GUI (Tkinter), and Flask web app. Includes recurring payment detection, budget forecasting, and dynamic visualizations."
-                tags={["Python", "Flask", "SQLite", "Pandas", "Tkinter"]}
-                metrics={[
-                  { label: "Active Features", value: "12+" },
-                  { label: "Data Points", value: "1K+" }
-                ]}
-                github="https://github.com"
-                demo="https://example.com"
-              />
-              <ProjectCard 
-                title="Multi-Interface NLP Chatbot"
-                description="Conversational chatbot leveraging NLTK for sentiment analysis, entity recognition, and context-aware responses. Features voice I/O and persistent conversation history."
-                tags={["Python", "NLTK", "Flask", "Tkinter", "NLP"]}
-                metrics={[
-                  { label: "Interfaces", value: "3" },
-                  { label: "Languages", value: "5+" }
-                ]}
-                github="https://github.com"
-                demo="https://example.com"
-              />
-              <ProjectCard 
-                title="LLM Prompt Injection Detector"
-                description="Research project on adversarial attack detection in generative AI systems. Developed classification models to identify malicious prompt patterns with 92% accuracy."
-                tags={["Python", "PyTorch", "NLP", "Security"]}
-                metrics={[
-                  { label: "Accuracy", value: "92%" },
-                  { label: "Dataset Size", value: "5K+" }
-                ]}
-                github="https://github.com"
-              />
-              <ProjectCard 
-                title="SJU Tech Commons Database"
-                description="Enterprise SQL database for managing 3D printer fleet, inventory tracking, maintenance logs, and usage analytics across the university."
-                tags={["SQL", "Java", "Database Design"]}
-                metrics={[
-                  { label: "Devices", value: "25+" },
-                  { label: "Monthly Users", value: "200+" }
-                ]}
-                github="https://github.com"
-              />
+            <ProjectGrid projects={projects} />
+          </section>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <section className="mb-32">
+            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
+              GitHub & Project Links
+            </h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+              {projects.map((project) => (
+                <a
+                  key={project.slug}
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 transition-all duration-300 hover:border-blue-500/60 hover:bg-slate-900/80"
+                >
+                  <h3 className="mb-4 text-sm font-bold text-white">{project.title}</h3>
+                  <div className="space-y-3">
+                    {project.repoStats.map((stat) => (
+                      <div key={stat.label}>
+                        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+                          {stat.label}
+                        </p>
+                        <p className="mt-1 text-sm text-blue-300">{stat.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </a>
+              ))}
             </div>
+            <p className="mt-6 text-xs leading-6 text-slate-500">
+              Repository cards point to the verified GitHub profile until exact public repo URLs are added.
+            </p>
           </section>
         </AnimatedSection>
 
@@ -224,9 +170,59 @@ export default function Home() {
         </AnimatedSection>
 
         <AnimatedSection>
-          <section className="mb-12">
+          <section id="research" className="mb-32 scroll-mt-28">
             <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Relevant Coursework & Research Focus
+              Featured Research
+            </h2>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+              <div>
+                <p className="mb-3 text-sm font-mono uppercase tracking-widest text-blue-400">
+                  {researchFocus.title}
+                </p>
+                <p className="max-w-3xl text-lg leading-8 text-slate-400">
+                  {researchFocus.abstract}
+                </p>
+                <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-300 mb-4">Methods</h3>
+                    <div className="space-y-3">
+                      {researchFocus.methods.map((method) => (
+                        <p key={method} className="border-l border-slate-800 pl-4 text-sm leading-6 text-slate-400">
+                          {method}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-300 mb-4">Security Implications</h3>
+                    <div className="space-y-3">
+                      {researchFocus.implications.map((item) => (
+                        <p key={item} className="border-l border-slate-800 pl-4 text-sm leading-6 text-slate-400">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 content-start">
+                {researchFocus.performance.map((metric) => (
+                  <div key={metric.label} className="rounded-lg border border-slate-800 bg-slate-900/50 p-6">
+                    <p className="text-3xl font-bold text-blue-400">{metric.value}</p>
+                    <p className="mt-2 text-xs font-mono uppercase tracking-wider text-slate-500">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <section className="mb-32">
+            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
+              Relevant Coursework
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
@@ -249,6 +245,34 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <section id="contact" className="mb-12 scroll-mt-28">
+            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
+              Contact
+            </h2>
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <h3 className="mb-4 text-3xl font-bold text-white">Let&apos;s build something useful.</h3>
+                <p className="text-sm leading-7 text-slate-400">
+                  Reach out for AI/ML opportunities, full-stack projects, research collaboration, or technical support work. The form validates locally and opens your email client with the message ready to send.
+                </p>
+                <div className="mt-8 space-y-3 text-sm text-slate-400">
+                  <a className="block text-blue-300 hover:text-blue-200" href="mailto:evans.cortez23@stjohns.edu">
+                    evans.cortez23@stjohns.edu
+                  </a>
+                  <a className="block text-blue-300 hover:text-blue-200" href="https://github.com/EvansCortez" target="_blank" rel="noopener noreferrer">
+                    github.com/EvansCortez
+                  </a>
+                  <a className="block text-blue-300 hover:text-blue-200" href="https://linkedin.com/in/evans-cortez" target="_blank" rel="noopener noreferrer">
+                    linkedin.com/in/evans-cortez
+                  </a>
+                </div>
+              </div>
+              <ContactForm />
             </div>
           </section>
         </AnimatedSection>

@@ -1,27 +1,27 @@
 "use client";
 
+import Link from "next/link";
+import type { Project } from "@/data/portfolio";
+
 export default function ProjectCard({
+  slug,
   title,
   description,
   tags,
   metrics,
   github,
   demo,
-}: {
-  title: string;
-  description: string;
-  tags: string[];
-  metrics?: { label: string; value: string }[];
-  github?: string;
-  demo?: string;
-}) {
+}: Pick<Project, "slug" | "title" | "description" | "tags" | "metrics" | "github" | "demo">) {
   return (
     <div className="group relative rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all duration-300 hover:border-blue-500/50 hover:bg-slate-900/80 hover:shadow-lg hover:shadow-blue-500/10">
       <div className="mb-4 flex items-start justify-between">
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
-            {title}
-          </h3>
+          <Link href={`/projects/${slug}`} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
+            <span className="absolute inset-0 rounded-xl" aria-hidden="true" />
+            <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+              {title}
+            </h3>
+          </Link>
         </div>
         <span className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           →
@@ -59,7 +59,7 @@ export default function ProjectCard({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-xs font-mono text-blue-400 hover:text-blue-300 py-2 px-3 bg-blue-500/5 border border-blue-500/20 rounded hover:border-blue-500/50 transition-all duration-300 text-center"
+              className="relative z-10 flex-1 text-xs font-mono text-blue-400 hover:text-blue-300 py-2 px-3 bg-blue-500/5 border border-blue-500/20 rounded hover:border-blue-500/50 transition-all duration-300 text-center"
             >
               GitHub
             </a>
@@ -69,7 +69,7 @@ export default function ProjectCard({
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-xs font-mono text-blue-400 hover:text-blue-300 py-2 px-3 bg-blue-500/5 border border-blue-500/20 rounded hover:border-blue-500/50 transition-all duration-300 text-center"
+              className="relative z-10 flex-1 text-xs font-mono text-blue-400 hover:text-blue-300 py-2 px-3 bg-blue-500/5 border border-blue-500/20 rounded hover:border-blue-500/50 transition-all duration-300 text-center"
             >
               Live Demo
             </a>
