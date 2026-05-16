@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Evans Cortez Portfolio
+
+Personal portfolio built with Next.js, React, and Tailwind CSS. It includes project case studies, a resume download, SEO metadata, and a contact form with an optional Resend-backed email route.
 
 ## Getting Started
 
@@ -16,9 +18,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. Portfolio content lives in `src/data/portfolio.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contact Form
+
+The contact form posts to `app/api/contact/route.ts`. It works as a mail app fallback without configuration, and sends through Resend when these environment variables are set:
+
+```bash
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=evans.cortez23@stjohns.edu
+CONTACT_FROM_EMAIL=Portfolio Contact <onboarding@resend.dev>
+```
+
+Use a verified sender/domain for `CONTACT_FROM_EMAIL` before production email delivery.
 
 ## Learn More
 

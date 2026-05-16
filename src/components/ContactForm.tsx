@@ -18,6 +18,7 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState<Partial<FormState>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function validateForm() {
     const nextErrors: Partial<FormState> = {};
@@ -38,7 +39,16 @@ export default function ContactForm() {
     return Object.keys(nextErrors).length === 0;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function openMailFallback() {
+    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`
+    );
+
+    window.location.href = `mailto:evans.cortez23@stjohns.edu?subject=${subject}&body=${body}`;
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!validateForm()) {
@@ -46,15 +56,33 @@ export default function ContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`
-    );
+    setIsSubmitting(true);
+    setStatus("Sending your message...");
 
-    window.location.href = `mailto:evans.cortez23@stjohns.edu?subject=${subject}&body=${body}`;
-    setStatus("Opening your email app with the message ready to send.");
-    setForm(initialForm);
-    setErrors({});
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setStatus("Message sent. Thanks for reaching out.");
+        setForm(initialForm);
+        setErrors({});
+        return;
+      }
+
+      openMailFallback();
+      setStatus("Email service is not configured yet, so your email app is opening instead.");
+    } catch {
+      openMailFallback();
+      setStatus("Network issue detected, so your email app is opening instead.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -107,9 +135,10 @@ export default function ContactForm() {
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
+          disabled={isSubmitting}
           className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30"
         >
-          Send Message
+          {isSubmitting ? "Sending..." : "Send Message"}
         </button>
         {status && <p className="text-xs text-slate-500">{status}</p>}
       </div>

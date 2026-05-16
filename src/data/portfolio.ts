@@ -55,8 +55,8 @@ export const projects: Project[] = [
     ],
     repoStats: [
       { label: "Primary Language", value: "Python" },
-      { label: "Interfaces", value: "CLI / GUI / Web" },
-      { label: "Repo Link", value: "Profile linked" },
+      { label: "Stars", value: "0" },
+      { label: "Last Updated", value: "May 2025" },
     ],
     highlights: [
       "Built CLI, desktop, and web interfaces over a shared data model.",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
       "Reduced manual budget review into a repeatable workflow.",
       "Created a reusable project architecture for future finance features.",
     ],
-    github: "https://github.com/EvansCortez",
+    github: "https://github.com/EvansCortez/Personal-Finance-Tracker",
   },
   {
     slug: "multi-interface-nlp-chatbot",
@@ -105,8 +105,8 @@ export const projects: Project[] = [
     ],
     repoStats: [
       { label: "Primary Language", value: "Python" },
-      { label: "NLP Layer", value: "NLTK" },
-      { label: "Repo Link", value: "Profile linked" },
+      { label: "Stars", value: "0" },
+      { label: "Last Updated", value: "April 2026" },
     ],
     highlights: [
       "Implemented sentiment analysis and entity extraction with NLTK.",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
       "Demonstrated how NLP systems can be packaged for multiple user contexts.",
       "Created a strong foundation for future retrieval or LLM-backed upgrades.",
     ],
-    github: "https://github.com/EvansCortez",
+    github: "https://github.com/EvansCortez/PlatypusBot",
   },
   {
     slug: "prompt-injection-detector",
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     repoStats: [
       { label: "Primary Language", value: "Python" },
       { label: "Modeling", value: "PyTorch" },
-      { label: "Repo Link", value: "Profile linked" },
+      { label: "Repository", value: "Pending public repo" },
     ],
     highlights: [
       "Explored adversarial prompting techniques and detection patterns.",
@@ -167,7 +167,6 @@ export const projects: Project[] = [
       "Built a portfolio-ready AI safety case study with measurable results.",
       "Connected ML modeling decisions to real security risks in GenAI systems.",
     ],
-    github: "https://github.com/EvansCortez",
   },
   {
     slug: "sju-tech-commons-database",
@@ -206,7 +205,7 @@ export const projects: Project[] = [
     repoStats: [
       { label: "Primary Stack", value: "SQL / Java" },
       { label: "Domain", value: "Operations" },
-      { label: "Repo Link", value: "Profile linked" },
+      { label: "Repository", value: "Pending public repo" },
     ],
     highlights: [
       "Modeled inventory, device, user, and maintenance entities.",
@@ -217,7 +216,6 @@ export const projects: Project[] = [
       "Improved visibility into maintenance patterns and resource usage.",
       "Showed production-minded database design for a real campus workflow.",
     ],
-    github: "https://github.com/EvansCortez",
   },
 ];
 

@@ -118,14 +118,9 @@ export default function Home() {
               GitHub & Project Links
             </h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-              {projects.map((project) => (
-                <a
-                  key={project.slug}
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 transition-all duration-300 hover:border-blue-500/60 hover:bg-slate-900/80"
-                >
+              {projects.map((project) => {
+                const cardContent = (
+                  <>
                   <h3 className="mb-4 text-sm font-bold text-white">{project.title}</h3>
                   <div className="space-y-3">
                     {project.repoStats.map((stat) => (
@@ -137,11 +132,35 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                </a>
-              ))}
+                  </>
+                );
+
+                if (project.github) {
+                  return (
+                    <a
+                      key={project.slug}
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 transition-all duration-300 hover:border-blue-500/60 hover:bg-slate-900/80"
+                    >
+                      {cardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div
+                    key={project.slug}
+                    className="rounded-lg border border-slate-800 bg-slate-900/50 p-5"
+                  >
+                    {cardContent}
+                  </div>
+                );
+              })}
             </div>
             <p className="mt-6 text-xs leading-6 text-slate-500">
-              Repository cards point to the verified GitHub profile until exact public repo URLs are added.
+              Cards link to exact public repositories where a matching repo is available.
             </p>
           </section>
         </AnimatedSection>
@@ -258,7 +277,7 @@ export default function Home() {
               <div>
                 <h3 className="mb-4 text-3xl font-bold text-white">Let&apos;s build something useful.</h3>
                 <p className="text-sm leading-7 text-slate-400">
-                  Reach out for AI/ML opportunities, full-stack projects, research collaboration, or technical support work. The form validates locally and opens your email client with the message ready to send.
+                  Reach out for AI/ML opportunities, full-stack projects, research collaboration, or technical support work. The form sends through the portfolio API when email delivery is configured, with an email-app fallback.
                 </p>
                 <div className="mt-8 space-y-3 text-sm text-slate-400">
                   <a className="block text-blue-300 hover:text-blue-200" href="mailto:evans.cortez23@stjohns.edu">
