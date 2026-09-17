@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
 :root {
   --background: #020617; /* Deep Slate 950 */
   --foreground: #f8fafc;
@@ -27,7 +29,8 @@ body {
 }
 
 .light .portfolio-shell {
-  background: linear-gradient(to bottom, #f8fafc, #e0f2fe, #f8fafc);
+  background: radial-gradient(circle at top left, rgb(20 184 166 / 0.16), transparent 36%),
+    linear-gradient(to bottom, #f8fafc, #ecfeff, #f8fafc);
   color: #0f172a;
 }
 
@@ -36,46 +39,4 @@ body {
   border-color: #cbd5e1;
   background: rgb(248 250 252 / 0.82);
   color: #475569;
-}
-
-.light .bg-slate-950\/50,
-.light .bg-slate-950\/90,
-.light .bg-slate-900\/40,
-.light .bg-slate-900\/50,
-.light .bg-slate-900\/60,
-.light .bg-slate-900\/80 {
-  background-color: rgb(255 255 255 / 0.82);
-}
-
-.light .border-slate-800,
-.light .border-slate-700,
-.light .border-slate-600 {
-  border-color: #cbd5e1;
-}
-
-.light .text-white,
-.light .text-slate-300 {
-  color: #0f172a;
-}
-
-.light .text-slate-400,
-.light .text-slate-500,
-.light .text-zinc-400,
-.light .text-zinc-500 {
-  color: #475569;
-}
-
-.light .text-zinc-300 {
-  color: #1e293b;
-}
-
-.light .bg-blue-500\/10,
-.light .bg-blue-500\/20,
-.light .bg-blue-500\/5 {
-  background-color: rgb(219 234 254 / 0.78);
-}
-
-.light .bg-blue-500.text-white,
-.light .bg-blue-600.text-white {
-  color: #ffffff;
 }

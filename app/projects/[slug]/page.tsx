@@ -23,12 +23,12 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Project Not Found | Evans Cortez",
+      title: "Project Not Found",
     };
   }
 
   return {
-    title: `${project.title} | Evans Cortez`,
+    title: project.title,
     description: project.summary,
     alternates: {
       canonical: `/projects/${project.slug}`,
@@ -80,26 +80,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-8 py-20 text-white">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-8 py-20 text-white light:text-slate-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
       <Link
-        href="/#projects"
-        className="mb-12 w-fit text-sm font-mono uppercase tracking-widest text-blue-400 transition-colors hover:text-blue-300"
+        href="/projects"
+        className="mb-12 w-fit text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700 transition-colors hover:text-teal-100"
       >
         ← Back to projects
       </Link>
 
       <section className="mb-16">
-        <p className="mb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+        <p className="mb-4 text-sm font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
           {project.category}
         </p>
-        <h1 className="mb-6 max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
+        <h1 className="mb-6 max-w-4xl text-5xl font-black tracking-tight text-white light:text-slate-900 md:text-7xl">
           {project.title}
         </h1>
-        <p className="max-w-3xl text-lg leading-8 text-slate-400">
+        <p className="max-w-3xl text-lg leading-8 text-slate-400 light:text-slate-600">
           {project.summary}
         </p>
       </section>
@@ -108,12 +108,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.metrics.map((metric) => (
           <div
             key={metric.label}
-            className="rounded-lg border border-slate-800 bg-slate-900/50 p-6"
+            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6"
           >
-            <div className="text-3xl font-bold text-blue-400">
+            <div className="text-3xl font-bold text-teal-300 light:text-teal-700">
               {metric.value}
             </div>
-            <div className="mt-2 text-xs font-mono uppercase tracking-wider text-slate-500">
+            <div className="mt-2 text-xs font-mono uppercase tracking-wider text-slate-500 light:text-slate-600">
               {metric.label}
             </div>
           </div>
@@ -121,10 +121,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+        <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
           Problem
         </h2>
-        <p className="max-w-4xl text-base leading-8 text-slate-400">
+        <p className="max-w-4xl text-base leading-8 text-slate-400 light:text-slate-600">
           {project.problem}
         </p>
       </section>
@@ -133,7 +133,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded border border-blue-500/20 bg-blue-500/10 px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-blue-300"
+            className="rounded border border-teal-400/20 bg-teal-400/10 light:bg-teal-100/70 px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-teal-200 light:text-teal-700"
           >
             {tag}
           </span>
@@ -144,12 +144,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.repoStats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-lg border border-slate-800 bg-slate-900/50 p-5"
+            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-5"
           >
-            <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
               {stat.label}
             </p>
-            <p className="mt-2 text-sm font-semibold text-blue-300">
+            <p className="mt-2 text-sm font-semibold text-teal-200 light:text-teal-700">
               {stat.value}
             </p>
           </div>
@@ -158,12 +158,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             Architecture
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.architecture.map((item) => (
-              <li key={item} className="border-l border-slate-800 pl-4">
+              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {item}
               </li>
             ))}
@@ -171,12 +171,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             Technical Decisions
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.technicalDecisions.map((item) => (
-              <li key={item} className="border-l border-slate-800 pl-4">
+              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {item}
               </li>
             ))}
@@ -186,12 +186,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             Build Highlights
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.highlights.map((highlight) => (
-              <li key={highlight} className="border-l border-slate-800 pl-4">
+              <li key={highlight} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {highlight}
               </li>
             ))}
@@ -199,12 +199,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             Outcomes
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.outcomes.map((outcome) => (
-              <li key={outcome} className="border-l border-slate-800 pl-4">
+              <li key={outcome} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {outcome}
               </li>
             ))}
@@ -214,12 +214,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             Challenges
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.challenges.map((challenge) => (
-              <li key={challenge} className="border-l border-slate-800 pl-4">
+              <li key={challenge} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {challenge}
               </li>
             ))}
@@ -227,12 +227,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <div>
-          <h2 className="mb-6 border-b border-slate-800 pb-4 text-sm font-mono uppercase tracking-widest text-blue-400">
+          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
             What I Learned
           </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400">
+          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
             {project.learnings.map((learning) => (
-              <li key={learning} className="border-l border-slate-800 pl-4">
+              <li key={learning} className="border-l border-slate-800 light:border-slate-300 pl-4">
                 {learning}
               </li>
             ))}
@@ -246,7 +246,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30"
+            className="rounded-md bg-teal-400 light:bg-teal-700 px-5 py-3 text-sm font-semibold text-slate-950 light:text-white transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20"
           >
             View GitHub
           </a>
@@ -256,7 +256,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-slate-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-blue-500"
+            className="rounded-md border border-slate-600 light:border-slate-300 px-5 py-3 text-sm font-semibold text-white light:text-slate-900 transition-all duration-300 hover:border-amber-200/70"
           >
             Live Demo
           </a>

@@ -1,301 +1,140 @@
-import CertificationCard from "@/components/CertificationCard";
-import ContactForm from "@/components/ContactForm";
-import TechStackVisualizer from "@/components/TechStackVisualizer";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import MetricStrip from "@/components/MetricStrip";
+import PortfolioVisual from "@/components/PortfolioVisual";
 import ProjectGrid from "@/components/ProjectGrid";
-import { certifications, projects, researchFocus, technologies } from "@/data/portfolio";
+import TechStackVisualizer from "@/components/TechStackVisualizer";
+import {
+  focusAreas,
+  impactMetrics,
+  profile,
+  projects,
+  researchFocus,
+  technologies,
+} from "@/data/portfolio";
 
 export default function Home() {
+  const featuredProjects = projects.slice(0, 4);
+
   return (
-    <div className="portfolio-shell flex flex-col min-h-screen bg-gradient-to-b from-black via-slate-900 to-black font-sans text-white">
-      <main className="flex flex-col w-full max-w-6xl mx-auto py-20 px-8">
-        
+    <div className="portfolio-shell min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,0.16),transparent_36%),radial-gradient(circle_at_82%_12%,rgba(251,191,36,0.1),transparent_28%),linear-gradient(180deg,#020617_0%,#111827_45%,#030712_100%)] font-sans text-white">
+      <main className="mx-auto flex w-full max-w-6xl flex-col px-6 py-16 sm:px-8 lg:py-24">
         <AnimatedSection>
-          <section className="flex flex-col items-start gap-8 mb-32">
-            <div className="space-y-4">
-              <h1 className="text-7xl font-black tracking-tight bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Evans Cortez
-              </h1>
-              <p className="text-3xl font-light text-slate-300">
-                Machine Learning Engineer & Full-Stack Developer
+          <section className="mb-24 grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="mb-6 text-sm font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
+                CS student building practical AI systems
               </p>
+              <h1 className="max-w-4xl text-5xl font-black tracking-tight text-white light:text-slate-900 sm:text-7xl">
+                {profile.name}
+              </h1>
+              <p className="mt-6 max-w-3xl text-2xl font-light leading-tight text-slate-300 light:text-slate-900 sm:text-3xl">
+                {profile.role}
+              </p>
+              <p className="mt-7 max-w-3xl text-base leading-8 text-slate-400 light:text-slate-600 sm:text-lg">
+                {profile.summary} Currently pursuing a B.S. in Computer Science at{" "}
+                <span className="font-semibold text-teal-200 light:text-teal-700">{profile.school}</span>,{" "}
+                {profile.graduation}.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/projects"
+                  className="rounded-md bg-teal-400 px-5 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20"
+                >
+                  View Work
+                </Link>
+                <Link
+                  href="/contact"
+                  className="rounded-md border border-slate-600 light:border-slate-300 bg-slate-950/40 light:bg-white/82 px-5 py-3 text-sm font-semibold text-white light:text-slate-900 transition-all duration-300 hover:border-amber-300/70 hover:text-amber-100"
+                >
+                  Contact
+                </Link>
+                <a
+                  href={profile.resume}
+                  className="rounded-md border border-slate-700 light:border-slate-300 px-5 py-3 text-sm font-semibold text-slate-300 light:text-slate-900 transition-all duration-300 hover:border-teal-400/70 hover:text-white"
+                >
+                  Resume
+                </a>
+              </div>
             </div>
-            
-            <p className="max-w-3xl text-lg leading-8 text-slate-400">
-              B.S. in Computer Science candidate at <span className="font-semibold text-blue-300">St. John&apos;s University</span> (Expected May 2027). 
-              Specialized in building intelligent systems, conversational AI agents, and scalable applications. 
-              Published research on adversarial prompt injection detection with 20+ industry certifications in AI/ML.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-4">
-              {["Python", "PyTorch", "React.js", "SQL", "NLP", "GenAI"].map((skill) => (
-                <div key={skill} className="px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/50 text-sm font-medium text-blue-300">
-                  {skill}
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-4 pt-6">
-              <a href="mailto:evscortez1212@gmail.com" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50">
-                Get In Touch
-              </a>
-              <a href="/Evans-Cortez-Resume.pdf" className="px-6 py-3 bg-slate-900/60 border border-blue-500/40 hover:border-blue-400 rounded-lg font-semibold transition-all duration-300">
-                Download Resume
-              </a>
-              <a href="https://linkedin.com/in/evans-cortez" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-blue-500 rounded-lg font-semibold transition-all duration-300">
-                LinkedIn
-              </a>
-              <a href="https://github.com/EvansCortez" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-blue-500 rounded-lg font-semibold transition-all duration-300">
-                GitHub
-              </a>
-            </div>
+            <PortfolioVisual />
           </section>
         </AnimatedSection>
 
         <AnimatedSection>
-          <section className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-12 pb-4 border-b border-slate-800">
-              Professional Experience
-            </h2>
-            <div className="space-y-16">
-              <div className="group">
-                <div className="flex justify-between items-start gap-4 mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold group-hover:text-blue-300 transition-colors">IT Student Worker</h3>
-                    <p className="text-blue-400 font-medium mt-1">St. John&apos;s University School of Law</p>
-                  </div>
-                  <span className="text-sm font-mono text-slate-500 whitespace-nowrap">April 2026 — Present</span>
-                </div>
-                <ul className="text-slate-400 text-sm space-y-2 ml-4 border-l border-slate-800 pl-4">
-                  <li>🔧 Diagnose and resolve hardware issues, maintaining 99.2% uptime for critical infrastructure</li>
-                  <li>📹 Deploy and optimize 50+ security cameras across campus with custom monitoring scripts</li>
-                  <li>💬 Manage 100+ monthly technical inquiries with 4.8/5 satisfaction rating</li>
-                  <li>🛠️ Perform preventative maintenance reducing emergency calls by 35%</li>
-                </ul>
-              </div>
+          <section className="mb-28">
+            <MetricStrip metrics={impactMetrics} />
+          </section>
+        </AnimatedSection>
 
-              <div className="group">
-                <div className="flex justify-between items-start gap-4 mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold group-hover:text-blue-300 transition-colors">Data Engineer Intern</h3>
-                    <p className="text-blue-400 font-medium mt-1">TechX (Remote)</p>
-                  </div>
-                  <span className="text-sm font-mono text-slate-500 whitespace-nowrap">June 2025 — Aug 2025</span>
-                </div>
-                <p className="text-slate-400 text-sm ml-4 border-l border-slate-800 pl-4">
-                  Designed NLP applications within Agile sprints using Python and modern ML frameworks. Conducted code reviews for 20+ PRs, implemented generative AI tools increasing automation efficiency by 40%.
+        <AnimatedSection>
+          <section className="mb-32 grid gap-6 lg:grid-cols-3">
+            {focusAreas.map((area) => (
+              <Link
+                key={area.label}
+                href={area.label === "AI Security" ? "/research" : "/projects"}
+                className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6 transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-900/80"
+              >
+                <p className="text-xs font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
+                  {area.label}
                 </p>
-              </div>
+                <p className="mt-4 text-sm leading-7 text-slate-300 light:text-slate-600">{area.value}</p>
+              </Link>
+            ))}
+          </section>
+        </AnimatedSection>
 
-              <div className="group">
-                <div className="flex justify-between items-start gap-4 mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold group-hover:text-blue-300 transition-colors">AI Agent Builder Intern</h3>
-                    <p className="text-blue-400 font-medium mt-1">NeuralSeek, Miami, FL</p>
-                  </div>
-                  <span className="text-sm font-mono text-slate-500 whitespace-nowrap">June 2025 — July 2025</span>
-                </div>
-                <p className="text-slate-400 text-sm ml-4 border-l border-slate-800 pl-4">
-                  Built 15+ conversational agents using LLMs and prompt engineering. Optimized response accuracy by 28% through iterative refinement and ethical AI practices.
+        <AnimatedSection>
+          <section className="mb-32">
+            <div className="mb-10 flex flex-col justify-between gap-4 border-b border-slate-800 light:border-slate-300 pb-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
+                  Selected Work
                 </p>
+                <h2 className="mt-3 text-3xl font-bold text-white light:text-slate-900">Case studies with technical depth.</h2>
               </div>
+              <Link href="/projects" className="text-sm font-semibold text-teal-200 light:text-teal-700 hover:text-teal-100">
+                All projects →
+              </Link>
             </div>
+            <ProjectGrid projects={featuredProjects} />
           </section>
         </AnimatedSection>
 
         <AnimatedSection>
-          <section id="projects" className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-12 pb-4 border-b border-slate-800">
-              Featured Projects
-            </h2>
-            <ProjectGrid projects={projects} />
-          </section>
-        </AnimatedSection>
-
-        <AnimatedSection>
-          <section className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              GitHub & Project Links
-            </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-              {projects.map((project) => {
-                const cardContent = (
-                  <>
-                  <h3 className="mb-4 text-sm font-bold text-white">{project.title}</h3>
-                  <div className="space-y-3">
-                    {project.repoStats.map((stat) => (
-                      <div key={stat.label}>
-                        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
-                          {stat.label}
-                        </p>
-                        <p className="mt-1 text-sm text-blue-300">{stat.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                  </>
-                );
-
-                if (project.github) {
-                  return (
-                    <a
-                      key={project.slug}
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-lg border border-slate-800 bg-slate-900/50 p-5 transition-all duration-300 hover:border-blue-500/60 hover:bg-slate-900/80"
-                    >
-                      {cardContent}
-                    </a>
-                  );
-                }
-
-                return (
-                  <div
-                    key={project.slug}
-                    className="rounded-lg border border-slate-800 bg-slate-900/50 p-5"
-                  >
-                    {cardContent}
-                  </div>
-                );
-              })}
+          <section className="mb-32 grid gap-10 lg:grid-cols-[0.45fr_0.55fr]">
+            <div>
+              <p className="text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
+                Experience
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-white light:text-slate-900">Operational work meets AI engineering.</h2>
+              <p className="mt-5 text-sm leading-7 text-slate-400 light:text-slate-600">
+                The portfolio combines hands-on infrastructure support, data engineering, and agent-building work.
+              </p>
+              <Link href="/experience" className="mt-6 inline-flex text-sm font-semibold text-teal-200 light:text-teal-700 hover:text-teal-100">
+                Full timeline →
+              </Link>
             </div>
-            <p className="mt-6 text-xs leading-6 text-slate-500">
-              Cards link to exact public repositories where a matching repo is available.
-            </p>
+            <ExperienceTimeline />
           </section>
         </AnimatedSection>
 
         <AnimatedSection>
-          <section className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Technical Proficiencies
-            </h2>
+          <section className="mb-32 grid gap-10 lg:grid-cols-[0.58fr_0.42fr]">
+            <div className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6">
+              <p className="text-sm font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
+                {researchFocus.title}
+              </p>
+              <h2 className="mt-4 text-3xl font-bold text-white light:text-slate-900">Researching safer LLM workflows.</h2>
+              <p className="mt-5 text-sm leading-7 text-slate-400 light:text-slate-600">{researchFocus.abstract}</p>
+              <Link href="/research" className="mt-6 inline-flex text-sm font-semibold text-teal-200 light:text-teal-700 hover:text-teal-100">
+                Read research focus →
+              </Link>
+            </div>
             <TechStackVisualizer technologies={technologies} />
           </section>
         </AnimatedSection>
-
-        <AnimatedSection>
-          <section className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Certifications & Professional Development
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {certifications.map((cert) => (
-                <CertificationCard key={cert.title} title={cert.title} date={cert.date} />
-              ))}
-            </div>
-            <p className="text-xs text-slate-500 mt-8">💡 Hover over any certification to see the date earned</p>
-          </section>
-        </AnimatedSection>
-
-        <AnimatedSection>
-          <section id="research" className="mb-32 scroll-mt-28">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Featured Research
-            </h2>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-              <div>
-                <p className="mb-3 text-sm font-mono uppercase tracking-widest text-blue-400">
-                  {researchFocus.title}
-                </p>
-                <p className="max-w-3xl text-lg leading-8 text-slate-400">
-                  {researchFocus.abstract}
-                </p>
-                <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
-                  <div>
-                    <h3 className="text-sm font-semibold text-slate-300 mb-4">Methods</h3>
-                    <div className="space-y-3">
-                      {researchFocus.methods.map((method) => (
-                        <p key={method} className="border-l border-slate-800 pl-4 text-sm leading-6 text-slate-400">
-                          {method}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-slate-300 mb-4">Security Implications</h3>
-                    <div className="space-y-3">
-                      {researchFocus.implications.map((item) => (
-                        <p key={item} className="border-l border-slate-800 pl-4 text-sm leading-6 text-slate-400">
-                          {item}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4 content-start">
-                {researchFocus.performance.map((metric) => (
-                  <div key={metric.label} className="rounded-lg border border-slate-800 bg-slate-900/50 p-6">
-                    <p className="text-3xl font-bold text-blue-400">{metric.value}</p>
-                    <p className="mt-2 text-xs font-mono uppercase tracking-wider text-slate-500">
-                      {metric.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        <AnimatedSection>
-          <section className="mb-32">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Relevant Coursework
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-4">Core Computer Science</h3>
-                <div className="space-y-2">
-                  {["Data Structures", "Algorithms", "Operating Systems", "Database Design", "Object-Oriented Programming", "Software Engineering Methods"].map((course) => (
-                    <div key={course} className="text-sm text-slate-400 flex items-center">
-                      <span className="text-blue-400 mr-3">▸</span> {course}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-4">AI & Machine Learning</h3>
-                <div className="space-y-2">
-                  {["Machine Learning", "Deep Learning", "Natural Language Processing", "AI Security & Adversarial Attacks", "Generative AI", "Ethical AI Practices"].map((course) => (
-                    <div key={course} className="text-sm text-slate-400 flex items-center">
-                      <span className="text-blue-400 mr-3">▸</span> {course}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        <AnimatedSection>
-          <section id="contact" className="mb-12 scroll-mt-28">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-blue-400 mb-8 pb-4 border-b border-slate-800">
-              Contact
-            </h2>
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-              <div>
-                <h3 className="mb-4 text-3xl font-bold text-white">Let&apos;s build something useful.</h3>
-                <p className="text-sm leading-7 text-slate-400">
-                  Reach out for AI/ML opportunities, full-stack projects, research collaboration, or technical support work. The form sends through the portfolio API when email delivery is configured, with an email-app fallback.
-                </p>
-                <div className="mt-8 space-y-3 text-sm text-slate-400">
-                  <a className="block text-blue-300 hover:text-blue-200" href="mailto:evans.cortez23@stjohns.edu">
-                    evans.cortez23@stjohns.edu
-                  </a>
-                  <a className="block text-blue-300 hover:text-blue-200" href="https://github.com/EvansCortez" target="_blank" rel="noopener noreferrer">
-                    github.com/EvansCortez
-                  </a>
-                  <a className="block text-blue-300 hover:text-blue-200" href="https://linkedin.com/in/evans-cortez" target="_blank" rel="noopener noreferrer">
-                    linkedin.com/in/evans-cortez
-                  </a>
-                </div>
-              </div>
-              <ContactForm />
-            </div>
-          </section>
-        </AnimatedSection>
-
       </main>
     </div>
   );

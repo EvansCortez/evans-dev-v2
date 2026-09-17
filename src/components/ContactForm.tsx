@@ -88,7 +88,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
-        <label htmlFor="name" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500">
+        <label htmlFor="name" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
           Name
         </label>
         <input
@@ -96,14 +96,14 @@ export default function ContactForm() {
           name="name"
           value={form.name}
           onChange={(event) => setForm({ ...form, name: event.target.value })}
-          className="w-full rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-white outline-none transition-colors focus:border-blue-400"
+          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
           autoComplete="name"
         />
-        {errors.name && <p className="mt-2 text-xs text-blue-300">{errors.name}</p>}
+        {errors.name && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.name}</p>}
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500">
+        <label htmlFor="email" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
           Email
         </label>
         <input
@@ -112,14 +112,14 @@ export default function ContactForm() {
           type="email"
           value={form.email}
           onChange={(event) => setForm({ ...form, email: event.target.value })}
-          className="w-full rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-white outline-none transition-colors focus:border-blue-400"
+          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
           autoComplete="email"
         />
-        {errors.email && <p className="mt-2 text-xs text-blue-300">{errors.email}</p>}
+        {errors.email && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.email}</p>}
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500">
+        <label htmlFor="message" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
           Message
         </label>
         <textarea
@@ -127,20 +127,20 @@ export default function ContactForm() {
           name="message"
           value={form.message}
           onChange={(event) => setForm({ ...form, message: event.target.value })}
-          className="min-h-36 w-full resize-y rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm leading-6 text-white outline-none transition-colors focus:border-blue-400"
+          className="min-h-36 w-full resize-y rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm leading-6 text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
         />
-        {errors.message && <p className="mt-2 text-xs text-blue-300">{errors.message}</p>}
+        {errors.message && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.message}</p>}
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30"
+          className="rounded-md bg-teal-400 light:bg-teal-700 px-5 py-3 text-sm font-semibold text-slate-950 light:text-white transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Sending..." : "Send Message"}
         </button>
-        {status && <p className="text-xs text-slate-500">{status}</p>}
+        {status && <p className="text-xs text-slate-500 light:text-slate-600">{status}</p>}
       </div>
     </form>
   );

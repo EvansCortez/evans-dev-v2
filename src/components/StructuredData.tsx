@@ -21,6 +21,11 @@ export default function StructuredData() {
       "Full-Stack Development",
       "Database Design",
     ],
+    mainEntityOfPage: {
+      "@type": "WebSite",
+      name: "Evans Cortez Portfolio",
+      url: "https://evanscortez.dev",
+    },
   };
 
   return (

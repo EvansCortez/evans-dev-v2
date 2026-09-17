@@ -5,14 +5,15 @@ const siteUrl = "https://evanscortez.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const staticRoutes = ["", "/projects", "/experience", "/research", "/credentials", "/contact"];
 
   return [
-    {
-      url: siteUrl,
+    ...staticRoutes.map((route) => ({
+      url: `${siteUrl}${route}`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 1,
-    },
+      priority: route === "" ? 1 : 0.9,
+    } as const)),
     ...projects.map((project) => ({
       url: `${siteUrl}/projects/${project.slug}`,
       lastModified: now,

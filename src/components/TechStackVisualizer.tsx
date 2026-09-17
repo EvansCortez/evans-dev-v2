@@ -11,7 +11,7 @@ export default function TechStackVisualizer({
     <div className="space-y-6">
       {categories.map((category) => (
         <div key={category}>
-          <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-3">
+          <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 light:text-slate-600 mb-3">
             {category}
           </h4>
           <div className="flex flex-wrap gap-2">
@@ -20,7 +20,7 @@ export default function TechStackVisualizer({
               .map((tech) => (
                 <div
                   key={tech.name}
-                  className="px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-md text-xs text-blue-300 font-medium hover:border-blue-500/60 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 cursor-default"
+                  className="cursor-default rounded-md border border-teal-400/25 bg-teal-400/10 light:bg-teal-100/70 px-3 py-1.5 text-xs font-medium text-teal-100 light:text-teal-700 transition-all duration-300 hover:border-amber-200/50 hover:text-amber-100 hover:shadow-lg hover:shadow-teal-500/10"
                 >
                   {tech.name}
                 </div>
