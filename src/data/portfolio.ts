@@ -1,3 +1,5 @@
+import { basePath } from "@/lib/site";
+
 export type Project = {
   slug: string;
   title: string;
@@ -17,6 +19,112 @@ export type Project = {
   github?: string;
   demo?: string;
 };
+
+export const profile = {
+  name: "Evans Cortez",
+  role: "Machine Learning Engineer & Full-Stack Developer",
+  email: "evans.cortez23@stjohns.edu",
+  github: "https://github.com/EvansCortez",
+  linkedin: "https://linkedin.com/in/evans-cortez",
+  resume: `${basePath}/Evans-Cortez-Resume.pdf`,
+  school: "St. John's University",
+  graduation: "Expected May 2027",
+  summary:
+    "Computer science student building AI security research, conversational agents, data systems, and full-stack products with measurable technical outcomes.",
+};
+
+export const impactMetrics = [
+  { label: "Project Case Studies", value: "4", detail: "AI, data systems, and full-stack builds" },
+  { label: "Model Accuracy", value: "92%", detail: "Prompt injection detection research" },
+  { label: "Certifications", value: "20+", detail: "AI, ML, IT support, and software engineering" },
+  { label: "Infrastructure Uptime", value: "99.2%", detail: "Campus technology support environment" },
+];
+
+export const focusAreas = [
+  {
+    label: "AI Security",
+    value: "Prompt injection detection, risk scoring, and safer agent workflows.",
+  },
+  {
+    label: "Applied Machine Learning",
+    value: "NLP pipelines, supervised learning, evaluation, and useful automation.",
+  },
+  {
+    label: "Full-Stack Systems",
+    value: "Next.js, Flask, SQL, local-first data models, and practical interfaces.",
+  },
+];
+
+export const experience = [
+  {
+    id: "sju-it-support",
+    role: "IT Student Worker",
+    company: "St. John's University School of Law",
+    location: "Queens, NY",
+    dates: "April 2026 - Present",
+    summary:
+      "Support campus technology operations across hardware, classroom systems, security infrastructure, and user-facing help workflows.",
+    highlights: [
+      "Diagnose and resolve hardware issues while maintaining 99.2% uptime for critical infrastructure.",
+      "Deploy and optimize 50+ security cameras across campus with custom monitoring scripts.",
+      "Manage 100+ monthly technical inquiries with a 4.8/5 satisfaction rating.",
+      "Perform preventative maintenance that reduced emergency calls by 35%.",
+    ],
+  },
+  {
+    id: "techx-data-engineer",
+    role: "Data Engineer Intern",
+    company: "TechX",
+    location: "Remote",
+    dates: "June 2025 - Aug 2025",
+    summary:
+      "Designed NLP applications within Agile sprints using Python and modern machine learning workflows.",
+    highlights: [
+      "Conducted code reviews for 20+ pull requests across data and automation features.",
+      "Implemented generative AI tools that increased automation efficiency by 40%.",
+      "Translated ambiguous product requirements into testable data processing tasks.",
+    ],
+  },
+  {
+    id: "neuralseek-agent-builder",
+    role: "AI Agent Builder Intern",
+    company: "NeuralSeek",
+    location: "Miami, FL",
+    dates: "June 2025 - July 2025",
+    summary:
+      "Built conversational agents using LLM workflows, prompt engineering, evaluation, and ethical AI practices.",
+    highlights: [
+      "Built 15+ conversational agents for practical assistant workflows.",
+      "Optimized response accuracy by 28% through iterative prompt and behavior refinement.",
+      "Documented agent behavior patterns to support maintainability and safer deployment.",
+    ],
+  },
+];
+
+export const coursework = [
+  {
+    category: "Core Computer Science",
+    items: [
+      "Data Structures",
+      "Algorithms",
+      "Operating Systems",
+      "Database Design",
+      "Object-Oriented Programming",
+      "Software Engineering Methods",
+    ],
+  },
+  {
+    category: "AI & Machine Learning",
+    items: [
+      "Machine Learning",
+      "Deep Learning",
+      "Natural Language Processing",
+      "AI Security & Adversarial Attacks",
+      "Generative AI",
+      "Ethical AI Practices",
+    ],
+  },
+];
 
 export const projects: Project[] = [
   {

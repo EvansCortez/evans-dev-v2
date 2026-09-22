@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
 :root {
   --background: #020617; /* Deep Slate 950 */
   --foreground: #f8fafc;
@@ -27,7 +29,8 @@ body {
 }
 
 .light .portfolio-shell {
-  background: linear-gradient(to bottom, #f8fafc, #e0f2fe, #f8fafc);
+  background: radial-gradient(circle at top left, rgb(20 184 166 / 0.16), transparent 36%),
+    linear-gradient(to bottom, #f8fafc, #ecfeff, #f8fafc);
   color: #0f172a;
 }
 
@@ -38,44 +41,77 @@ body {
   color: #475569;
 }
 
-.light .bg-slate-950\/50,
-.light .bg-slate-950\/90,
-.light .bg-slate-900\/40,
-.light .bg-slate-900\/50,
-.light .bg-slate-900\/60,
-.light .bg-slate-900\/80 {
-  background-color: rgb(255 255 255 / 0.82);
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 6%) scale(1.08); }
 }
 
-.light .border-slate-800,
-.light .border-slate-700,
-.light .border-slate-600 {
-  border-color: #cbd5e1;
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5%, -4%) scale(1.05); }
 }
 
-.light .text-white,
-.light .text-slate-300 {
-  color: #0f172a;
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, -5%) scale(1.1); }
 }
 
-.light .text-slate-400,
-.light .text-slate-500,
-.light .text-zinc-400,
-.light .text-zinc-500 {
-  color: #475569;
+.ambient-blob-a {
+  animation: drift-a 26s ease-in-out infinite;
 }
 
-.light .text-zinc-300 {
-  color: #1e293b;
+.ambient-blob-b {
+  animation: drift-b 32s ease-in-out infinite;
 }
 
-.light .bg-blue-500\/10,
-.light .bg-blue-500\/20,
-.light .bg-blue-500\/5 {
-  background-color: rgb(219 234 254 / 0.78);
+.ambient-blob-c {
+  animation: drift-c 22s ease-in-out infinite;
 }
 
-.light .bg-blue-500.text-white,
-.light .bg-blue-600.text-white {
-  color: #ffffff;
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes float-node {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3.2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin-slow-reverse 60s linear infinite;
+}
+
+.animate-float-node {
+  animation: float-node 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob-a,
+  .ambient-blob-b,
+  .ambient-blob-c,
+  .animate-spin-slow,
+  .animate-spin-slower,
+  .animate-float-node,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
 }
