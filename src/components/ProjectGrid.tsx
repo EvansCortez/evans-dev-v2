@@ -4,7 +4,13 @@ import { useMemo, useState } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import type { Project } from "@/data/portfolio";
 
-export default function ProjectGrid({ projects }: { projects: Project[] }) {
+export default function ProjectGrid({
+  projects,
+  filterAllLabel = "All",
+}: {
+  projects: Project[];
+  filterAllLabel?: string;
+}) {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = useMemo(() => {
@@ -44,7 +50,7 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                   : "border-slate-700 light:border-slate-300 bg-slate-950/45 light:bg-white/82 text-slate-400 light:text-slate-600 hover:border-teal-400/60 hover:text-teal-100"
               }`}
             >
-              {filter}
+              {filter === "All" ? filterAllLabel : filter}
             </button>
           );
         })}

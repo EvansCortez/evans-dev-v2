@@ -13,7 +13,7 @@ export default function ProjectCard({
   demo,
 }: Pick<Project, "slug" | "title" | "description" | "tags" | "metrics" | "github" | "demo">) {
   return (
-    <div className="group relative rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6 transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-900/80 hover:shadow-lg hover:shadow-teal-500/10">
+    <div className="group relative rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6 transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-900/80 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]">
       <div className="mb-4 flex items-start justify-between">
         <div className="flex-1">
           <Link href={`/projects/${slug}`} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">

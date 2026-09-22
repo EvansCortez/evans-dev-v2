@@ -2,11 +2,16 @@ import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import ProjectGrid from "@/components/ProjectGrid";
 import { projects } from "@/data/portfolio";
+import { hreflangAlternates } from "@/i18n/config";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
     "Project case studies from Evans Cortez across AI security, NLP, full-stack finance tooling, and database systems.",
+  alternates: {
+    canonical: "/projects",
+    languages: hreflangAlternates("/projects"),
+  },
 };
 
 export default function ProjectsPage() {

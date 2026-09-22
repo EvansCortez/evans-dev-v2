@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import MetricStrip from "@/components/MetricStrip";
 import PageIntro from "@/components/PageIntro";
-import { impactMetrics } from "@/data/portfolio";
+import { experience, impactMetrics } from "@/data/portfolio";
+import { hreflangAlternates } from "@/i18n/config";
 
 export const metadata: Metadata = {
   title: "Experience",
   description:
     "Professional experience for Evans Cortez, including IT support, data engineering, and AI agent building.",
+  alternates: {
+    canonical: "/experience",
+    languages: hreflangAlternates("/experience"),
+  },
 };
 
 export default function ExperiencePage() {
@@ -22,7 +27,7 @@ export default function ExperiencePage() {
         <div className="mb-12">
           <MetricStrip metrics={impactMetrics} />
         </div>
-        <ExperienceTimeline />
+        <ExperienceTimeline experience={experience} />
       </div>
     </main>
   );

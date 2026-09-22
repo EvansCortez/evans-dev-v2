@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import BackToTop from "@/components/BackToTop";
-import SiteNav from "@/components/SiteNav";
-import StructuredData from "@/components/StructuredData";
+import AmbientBackdrop from "@/components/AmbientBackdrop";
+import { hreflangAlternates } from "@/i18n/config";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,6 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://evanscortez.dev"),
   alternates: {
     canonical: "/",
+    languages: hreflangAlternates("/"),
   },
   keywords: [
     "Evans Cortez",
@@ -48,15 +48,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <SiteNav />
-
-        <StructuredData />
+        <AmbientBackdrop />
         {children}
-        <BackToTop />
-
-        <footer className="py-10 border-t border-slate-800 text-center text-slate-500 text-sm">
-          © 2026 Evans Cortez. Built with Next.js and React.
-        </footer>
       </body>
     </html>
   );

@@ -2,11 +2,16 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import PageIntro from "@/components/PageIntro";
 import { profile } from "@/data/portfolio";
+import { hreflangAlternates } from "@/i18n/config";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact Evans Cortez for AI, machine learning, full-stack, research, and technical support opportunities.",
+  alternates: {
+    canonical: "/contact",
+    languages: hreflangAlternates("/contact"),
+  },
 };
 
 export default function ContactPage() {
@@ -29,7 +34,7 @@ export default function ContactPage() {
           }
         />
         <section className="grid gap-12 lg:grid-cols-[0.42fr_0.58fr]">
-          <div className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6">
+          <div className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6">
             <h2 className="text-2xl font-bold text-white light:text-slate-900">Direct links</h2>
             <div className="mt-6 space-y-4 text-sm">
               <a className="block text-teal-200 light:text-teal-700 hover:text-teal-100" href={`mailto:${profile.email}`}>

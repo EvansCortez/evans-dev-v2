@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function BackToTop() {
+export default function BackToTop({ label }: { label: string }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export default function BackToTop() {
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
-      aria-label="Back to top"
-      title="Back to top"
+      aria-label={label}
+      title={label}
     >
       ↑
     </button>

@@ -6,6 +6,7 @@ import PortfolioVisual from "@/components/PortfolioVisual";
 import ProjectGrid from "@/components/ProjectGrid";
 import TechStackVisualizer from "@/components/TechStackVisualizer";
 import {
+  experience,
   focusAreas,
   impactMetrics,
   profile,
@@ -74,7 +75,7 @@ export default function Home() {
               <Link
                 key={area.label}
                 href={area.label === "AI Security" ? "/research" : "/projects"}
-                className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6 transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-900/80"
+                className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6 transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-900/80 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]"
               >
                 <p className="text-xs font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
                   {area.label}
@@ -116,13 +117,13 @@ export default function Home() {
                 Full timeline →
               </Link>
             </div>
-            <ExperienceTimeline />
+            <ExperienceTimeline experience={experience} />
           </section>
         </AnimatedSection>
 
         <AnimatedSection>
           <section className="mb-32 grid gap-10 lg:grid-cols-[0.58fr_0.42fr]">
-            <div className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6">
+            <div className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]">
               <p className="text-sm font-mono uppercase tracking-widest text-amber-200 light:text-amber-800">
                 {researchFocus.title}
               </p>

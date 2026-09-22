@@ -1,12 +1,14 @@
-import { experience } from "@/data/portfolio";
+import type { experience as defaultExperience } from "@/data/portfolio";
 
-export default function ExperienceTimeline() {
+type ExperienceItem = (typeof defaultExperience)[number];
+
+export default function ExperienceTimeline({ experience }: { experience: ExperienceItem[] }) {
   return (
     <div className="space-y-6">
       {experience.map((item) => (
         <article
-          key={`${item.role}-${item.company}`}
-          className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6"
+          key={item.id}
+          className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]"
         >
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
             <div>

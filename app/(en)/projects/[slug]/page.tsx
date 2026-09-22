@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/portfolio";
+import { hreflangAlternates } from "@/i18n/config";
 
 const siteUrl = "https://evanscortez.dev";
 
@@ -32,6 +33,7 @@ export async function generateMetadata({
     description: project.summary,
     alternates: {
       canonical: `/projects/${project.slug}`,
+      languages: hreflangAlternates(`/projects/${project.slug}`),
     },
     keywords: [
       project.title,
@@ -108,7 +110,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.metrics.map((metric) => (
           <div
             key={metric.label}
-            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-6"
+            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-6 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]"
           >
             <div className="text-3xl font-bold text-teal-300 light:text-teal-700">
               {metric.value}
@@ -144,7 +146,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.repoStats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 p-5"
+            className="rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 p-5 transition-shadow duration-300 hover:shadow-[0_0_40px_-12px_rgba(45,212,191,0.35)] light:hover:shadow-[0_0_40px_-14px_rgba(15,118,110,0.25)]"
           >
             <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
               {stat.label}

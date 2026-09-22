@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { en, type Dictionary } from "@/i18n/dictionary";
 
 type FormState = {
   name: string;
@@ -14,7 +15,11 @@ const initialForm: FormState = {
   message: "",
 };
 
-export default function ContactForm() {
+export default function ContactForm({
+  dictionary = en.contactForm,
+}: {
+  dictionary?: Dictionary["contactForm"];
+}) {
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState<Partial<FormState>>({});
@@ -24,15 +29,15 @@ export default function ContactForm() {
     const nextErrors: Partial<FormState> = {};
 
     if (form.name.trim().length < 2) {
-      nextErrors.name = "Add your name.";
+      nextErrors.name = dictionary.errorName;
     }
 
     if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-      nextErrors.email = "Use a valid email address.";
+      nextErrors.email = dictionary.errorEmail;
     }
 
     if (form.message.trim().length < 20) {
-      nextErrors.message = "Write at least 20 characters.";
+      nextErrors.message = dictionary.errorMessage;
     }
 
     setErrors(nextErrors);
@@ -52,12 +57,12 @@ export default function ContactForm() {
     event.preventDefault();
 
     if (!validateForm()) {
-      setStatus("Please check the highlighted fields.");
+      setStatus(dictionary.statusCheckFields);
       return;
     }
 
     setIsSubmitting(true);
-    setStatus("Sending your message...");
+    setStatus(dictionary.statusSending);
 
     try {
       const response = await fetch("/api/contact", {
@@ -69,17 +74,17 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        setStatus("Message sent. Thanks for reaching out.");
+        setStatus(dictionary.statusSent);
         setForm(initialForm);
         setErrors({});
         return;
       }
 
       openMailFallback();
-      setStatus("Email service is not configured yet, so your email app is opening instead.");
+      setStatus(dictionary.statusUnconfigured);
     } catch {
       openMailFallback();
-      setStatus("Network issue detected, so your email app is opening instead.");
+      setStatus(dictionary.statusNetworkIssue);
     } finally {
       setIsSubmitting(false);
     }
@@ -89,14 +94,14 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="name" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
-          Name
+          {dictionary.name}
         </label>
         <input
           id="name"
           name="name"
           value={form.name}
           onChange={(event) => setForm({ ...form, name: event.target.value })}
-          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
+          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300 focus:shadow-[0_0_0_4px_rgba(45,212,191,0.12)]"
           autoComplete="name"
         />
         {errors.name && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.name}</p>}
@@ -104,7 +109,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="email" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
-          Email
+          {dictionary.email}
         </label>
         <input
           id="email"
@@ -112,7 +117,7 @@ export default function ContactForm() {
           type="email"
           value={form.email}
           onChange={(event) => setForm({ ...form, email: event.target.value })}
-          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
+          className="w-full rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 px-4 py-3 text-sm text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300 focus:shadow-[0_0_0_4px_rgba(45,212,191,0.12)]"
           autoComplete="email"
         />
         {errors.email && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.email}</p>}
@@ -120,14 +125,14 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="mb-2 block text-xs font-mono uppercase tracking-widest text-slate-500 light:text-slate-600">
-          Message
+          {dictionary.message}
         </label>
         <textarea
           id="message"
           name="message"
           value={form.message}
           onChange={(event) => setForm({ ...form, message: event.target.value })}
-          className="min-h-36 w-full resize-y rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-4 py-3 text-sm leading-6 text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300"
+          className="min-h-36 w-full resize-y rounded-lg border border-slate-800 light:border-slate-300 bg-slate-950/55 light:bg-white/82 backdrop-blur-xl ring-1 ring-white/5 light:ring-black/5 px-4 py-3 text-sm leading-6 text-white light:text-slate-900 outline-none transition-colors focus:border-teal-300 focus:shadow-[0_0_0_4px_rgba(45,212,191,0.12)]"
         />
         {errors.message && <p className="mt-2 text-xs text-amber-100 light:text-amber-800">{errors.message}</p>}
       </div>
@@ -138,7 +143,7 @@ export default function ContactForm() {
           disabled={isSubmitting}
           className="rounded-md bg-teal-400 light:bg-teal-700 px-5 py-3 text-sm font-semibold text-slate-950 light:text-white transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          {isSubmitting ? dictionary.sending : dictionary.send}
         </button>
         {status && <p className="text-xs text-slate-500 light:text-slate-600">{status}</p>}
       </div>

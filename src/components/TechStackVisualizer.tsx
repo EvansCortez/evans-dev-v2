@@ -1,9 +1,21 @@
 "use client";
 
+import type { Dictionary } from "@/i18n/getDictionary";
+
+const categoryKeyByLabel: Record<string, keyof Dictionary["techCategories"]> = {
+  Languages: "languages",
+  "ML & Data Science": "mlAndData",
+  "Web & Backend": "webAndBackend",
+  Databases: "databases",
+  "Tools & Platforms": "tools",
+};
+
 export default function TechStackVisualizer({
   technologies,
+  categoryLabels,
 }: {
   technologies: { name: string; category: string }[];
+  categoryLabels?: Dictionary["techCategories"];
 }) {
   const categories = Array.from(new Set(technologies.map((t) => t.category)));
 
@@ -12,7 +24,7 @@ export default function TechStackVisualizer({
       {categories.map((category) => (
         <div key={category}>
           <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 light:text-slate-600 mb-3">
-            {category}
+            {categoryLabels?.[categoryKeyByLabel[category]] ?? category}
           </h4>
           <div className="flex flex-wrap gap-2">
             {technologies

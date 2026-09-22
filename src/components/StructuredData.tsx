@@ -1,4 +1,4 @@
-export default function StructuredData() {
+export default function StructuredData({ jobTitle }: { jobTitle: string }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -9,7 +9,7 @@ export default function StructuredData() {
       "https://github.com/EvansCortez",
       "https://linkedin.com/in/evans-cortez",
     ],
-    jobTitle: "Machine Learning Engineer and Full-Stack Developer",
+    jobTitle,
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "St. John's University",

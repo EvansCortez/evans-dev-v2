@@ -55,6 +55,7 @@ export const focusAreas = [
 
 export const experience = [
   {
+    id: "sju-it-support",
     role: "IT Student Worker",
     company: "St. John's University School of Law",
     location: "Queens, NY",
@@ -69,6 +70,7 @@ export const experience = [
     ],
   },
   {
+    id: "techx-data-engineer",
     role: "Data Engineer Intern",
     company: "TechX",
     location: "Remote",
@@ -82,6 +84,7 @@ export const experience = [
     ],
   },
   {
+    id: "neuralseek-agent-builder",
     role: "AI Agent Builder Intern",
     company: "NeuralSeek",
     location: "Miami, FL",

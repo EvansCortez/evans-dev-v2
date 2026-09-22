@@ -27,7 +27,13 @@ function subscribeToThemeChanges(callback: () => void) {
   };
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  labelToLight,
+  labelToDark,
+}: {
+  labelToLight: string;
+  labelToDark: string;
+}) {
   const theme = useSyncExternalStore(
     subscribeToThemeChanges,
     getThemeSnapshot,
@@ -50,10 +56,10 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       className="rounded-md border border-slate-700 light:border-slate-300 bg-slate-950/55 light:bg-white/82 px-3 py-2 text-xs font-mono uppercase tracking-wider text-slate-300 light:text-slate-900 transition-all duration-300 hover:border-teal-400/70 hover:text-teal-100"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-      title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+      aria-label={theme === "dark" ? labelToLight : labelToDark}
+      title={theme === "dark" ? labelToLight : labelToDark}
     >
-      {theme === "dark" ? "Light" : "Dark"}
+      {theme === "dark" ? labelToLight : labelToDark}
     </button>
   );
 }
