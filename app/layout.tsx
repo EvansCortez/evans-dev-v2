@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AmbientBackdrop from "@/components/AmbientBackdrop";
 import { hreflangAlternates } from "@/i18n/config";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Evans Cortez, a computer science student building machine learning systems, AI agents, and full-stack applications.",
-  metadataBase: new URL("https://evanscortez.dev"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
     languages: hreflangAlternates("/"),
@@ -23,13 +24,13 @@ export const metadata: Metadata = {
     "Prompt Injection",
     "Next.js Portfolio",
   ],
-  authors: [{ name: "Evans Cortez", url: "https://evanscortez.dev" }],
+  authors: [{ name: "Evans Cortez", url: siteUrl }],
   openGraph: {
     title: "Evans Cortez | ML Engineer & Full-Stack Developer",
     description:
       "Machine learning, AI agent, and full-stack portfolio of Evans Cortez.",
     type: "website",
-    url: "https://evanscortez.dev",
+    url: siteUrl,
     siteName: "Evans Cortez Portfolio",
   },
   twitter: {

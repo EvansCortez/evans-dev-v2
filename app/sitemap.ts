@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/portfolio";
 import { locales, localizedPath, hreflangAlternates } from "@/i18n/config";
+import { siteUrl } from "@/lib/site";
 
-const siteUrl = "https://evanscortez.dev";
+export const dynamic = "force-static";
+
 const staticRoutes = ["/", "/projects", "/experience", "/research", "/credentials", "/contact"];
 
 function languageAlternates(route: string): Record<string, string> {

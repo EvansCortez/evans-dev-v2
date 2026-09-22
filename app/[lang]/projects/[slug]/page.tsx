@@ -5,8 +5,7 @@ import { getPortfolioData } from "@/data/getPortfolioData";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale, localizedPath, defaultLocale, hreflangAlternates, type Locale } from "@/i18n/config";
 import { projects as canonicalProjects } from "@/data/portfolio";
-
-const siteUrl = "https://evanscortez.dev";
+import { siteUrl } from "@/lib/site";
 
 type ProjectPageProps = {
   params: Promise<{ lang: string; slug: string }>;

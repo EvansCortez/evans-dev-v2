@@ -1,3 +1,5 @@
+import { basePath } from "@/lib/site";
+
 export type Project = {
   slug: string;
   title: string;
@@ -24,7 +26,7 @@ export const profile = {
   email: "evans.cortez23@stjohns.edu",
   github: "https://github.com/EvansCortez",
   linkedin: "https://linkedin.com/in/evans-cortez",
-  resume: "/Evans-Cortez-Resume.pdf",
+  resume: `${basePath}/Evans-Cortez-Resume.pdf`,
   school: "St. John's University",
   graduation: "Expected May 2027",
   summary:

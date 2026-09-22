@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { localizedPath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/getDictionary";
+import { basePath } from "@/lib/site";
 
 export default function SiteNav({
   locale,
@@ -39,7 +40,7 @@ export default function SiteNav({
             </Link>
           ))}
           <a
-            href="/Evans-Cortez-Resume.pdf"
+            href={`${basePath}/Evans-Cortez-Resume.pdf`}
             className="rounded-md border border-slate-700 light:border-slate-300 px-4 py-2 transition-colors hover:border-amber-200/70 hover:text-white"
           >
             {dictionary.nav.resume}
@@ -72,7 +73,7 @@ export default function SiteNav({
             </Link>
           ))}
           <a
-            href="/Evans-Cortez-Resume.pdf"
+            href={`${basePath}/Evans-Cortez-Resume.pdf`}
             className="rounded-md px-2 py-2 hover:bg-slate-900/60 hover:text-white transition-colors"
             onClick={() => setIsOpen(false)}
           >

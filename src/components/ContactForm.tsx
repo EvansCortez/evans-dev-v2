@@ -23,7 +23,6 @@ export default function ContactForm({
   const [form, setForm] = useState<FormState>(initialForm);
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState<Partial<FormState>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function validateForm() {
     const nextErrors: Partial<FormState> = {};
@@ -53,7 +52,7 @@ export default function ContactForm({
     window.location.href = `mailto:evans.cortez23@stjohns.edu?subject=${subject}&body=${body}`;
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!validateForm()) {
@@ -61,33 +60,10 @@ export default function ContactForm({
       return;
     }
 
-    setIsSubmitting(true);
-    setStatus(dictionary.statusSending);
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      if (response.ok) {
-        setStatus(dictionary.statusSent);
-        setForm(initialForm);
-        setErrors({});
-        return;
-      }
-
-      openMailFallback();
-      setStatus(dictionary.statusUnconfigured);
-    } catch {
-      openMailFallback();
-      setStatus(dictionary.statusNetworkIssue);
-    } finally {
-      setIsSubmitting(false);
-    }
+    openMailFallback();
+    setStatus(dictionary.statusOpeningMailApp);
+    setForm(initialForm);
+    setErrors({});
   }
 
   return (
@@ -140,10 +116,9 @@ export default function ContactForm({
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          disabled={isSubmitting}
-          className="rounded-md bg-teal-400 light:bg-teal-700 px-5 py-3 text-sm font-semibold text-slate-950 light:text-white transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-md bg-teal-400 light:bg-teal-700 px-5 py-3 text-sm font-semibold text-slate-950 light:text-white transition-all duration-300 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20"
         >
-          {isSubmitting ? dictionary.sending : dictionary.send}
+          {dictionary.send}
         </button>
         {status && <p className="text-xs text-slate-500 light:text-slate-600">{status}</p>}
       </div>

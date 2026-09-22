@@ -69,15 +69,11 @@ export type Dictionary = {
     email: string;
     message: string;
     send: string;
-    sending: string;
     errorName: string;
     errorEmail: string;
     errorMessage: string;
     statusCheckFields: string;
-    statusSending: string;
-    statusSent: string;
-    statusUnconfigured: string;
-    statusNetworkIssue: string;
+    statusOpeningMailApp: string;
   };
   projectDetail: {
     backToProjects: string;
@@ -172,15 +168,11 @@ export const en: Dictionary = {
     email: "Email",
     message: "Message",
     send: "Send Message",
-    sending: "Sending...",
     errorName: "Add your name.",
     errorEmail: "Use a valid email address.",
     errorMessage: "Write at least 20 characters.",
     statusCheckFields: "Please check the highlighted fields.",
-    statusSending: "Sending your message...",
-    statusSent: "Message sent. Thanks for reaching out.",
-    statusUnconfigured: "Email service is not configured yet, so your email app is opening instead.",
-    statusNetworkIssue: "Network issue detected, so your email app is opening instead.",
+    statusOpeningMailApp: "Opening your email app with this message pre-filled.",
   },
   projectDetail: {
     backToProjects: "← Back to projects",

@@ -3,8 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/portfolio";
 import { hreflangAlternates } from "@/i18n/config";
-
-const siteUrl = "https://evanscortez.dev";
+import { siteUrl } from "@/lib/site";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;

@@ -1,9 +1,11 @@
+import { siteUrl } from "@/lib/site";
+
 export default function StructuredData({ jobTitle }: { jobTitle: string }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Evans Cortez",
-    url: "https://evanscortez.dev",
+    url: siteUrl,
     email: "mailto:evans.cortez23@stjohns.edu",
     sameAs: [
       "https://github.com/EvansCortez",
@@ -24,7 +26,7 @@ export default function StructuredData({ jobTitle }: { jobTitle: string }) {
     mainEntityOfPage: {
       "@type": "WebSite",
       name: "Evans Cortez Portfolio",
-      url: "https://evanscortez.dev",
+      url: siteUrl,
     },
   };
 
