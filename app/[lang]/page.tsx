@@ -20,10 +20,7 @@ export async function generateMetadata({
   if (!isLocale(lang) || lang === defaultLocale) return {};
   const { profile } = getPortfolioData(lang);
   return {
-    title: {
-      default: `${profile.name} | ${profile.role}`,
-      template: `%s | ${profile.name}`,
-    },
+    title: profile.role,
     description: profile.summary,
     alternates: {
       canonical: `/${lang}`,
