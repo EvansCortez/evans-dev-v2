@@ -168,89 +168,23 @@ export default async function LocalizedProjectPage({ params }: ProjectPageProps)
         ))}
       </section>
 
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.architecture}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.architecture.map((item) => (
-              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {item}
-              </li>
-            ))}
+      <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2">
+      {[
+        { title: dictionary.projectDetail.architecture, items: project.architecture },
+        { title: dictionary.projectDetail.technicalDecisions, items: project.technicalDecisions },
+        { title: dictionary.projectDetail.buildHighlights, items: project.highlights },
+        { title: dictionary.projectDetail.outcomes, items: project.outcomes },
+        { title: dictionary.projectDetail.challenges, items: project.challenges },
+        { title: dictionary.projectDetail.whatILearned, items: project.learnings }
+      ].filter(section => section.items.length > 0).map(section => (
+        <section key={section.title}>
+          <h2 className="mb-5 text-lg font-semibold text-white light:text-slate-900">{section.title}</h2>
+          <ul className="space-y-3 text-sm leading-7 text-slate-400 light:text-slate-600">
+            {section.items.map(item => <li key={item}>{item}</li>)}
           </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.technicalDecisions}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.technicalDecisions.map((item) => (
-              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.buildHighlights}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.highlights.map((highlight) => (
-              <li key={highlight} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {highlight}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.outcomes}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.outcomes.map((outcome) => (
-              <li key={outcome} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {outcome}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.challenges}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.challenges.map((challenge) => (
-              <li key={challenge} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {challenge}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            {dictionary.projectDetail.whatILearned}
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.learnings.map((learning) => (
-              <li key={learning} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {learning}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </section>
+      ))}
+      </div>
 
       <div className="flex flex-wrap gap-3">
         {project.github && (

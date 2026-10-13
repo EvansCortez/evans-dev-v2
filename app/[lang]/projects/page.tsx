@@ -43,7 +43,7 @@ export default async function LocalizedProjectsPage({
           title={dictionary.projectsPage.title}
           description={dictionary.projectsPage.description}
         />
-        <ProjectGrid projects={projects} filterAllLabel={dictionary.projectsPage.filterAll} />
+        <ProjectGrid projects={projects} locale={locale} filterAllLabel={dictionary.projectsPage.filterAll} />
       </div>
     </main>
   );

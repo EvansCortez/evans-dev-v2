@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import AmbientBackdrop from "@/components/AmbientBackdrop";
 import { hreflangAlternates } from "@/i18n/config";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Evans Cortez | ML Engineer & Full-Stack Developer",
+    default: "Evans Cortez | AI & Software Development",
     template: "%s | Evans Cortez",
   },
   description:
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Evans Cortez", url: siteUrl }],
   openGraph: {
-    title: "Evans Cortez | ML Engineer & Full-Stack Developer",
+    title: "Evans Cortez | AI & Software Development",
     description:
       "Machine learning, AI agent, and full-stack portfolio of Evans Cortez.",
     type: "website",
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evans Cortez | ML Engineer & Full-Stack Developer",
+    title: "Evans Cortez | AI & Software Development",
     description:
       "Machine learning, AI agent, and full-stack portfolio of Evans Cortez.",
   },
@@ -49,7 +48,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <AmbientBackdrop />
         {children}
       </body>
     </html>

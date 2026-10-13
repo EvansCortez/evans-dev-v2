@@ -157,89 +157,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         ))}
       </section>
 
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            Architecture
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.architecture.map((item) => (
-              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {item}
-              </li>
-            ))}
+      <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2">
+      {[
+        { title: 'Architecture', items: project.architecture },
+        { title: 'Technical Decisions', items: project.technicalDecisions },
+        { title: 'Build Highlights', items: project.highlights },
+        { title: 'Outcomes', items: project.outcomes },
+        { title: 'Challenges', items: project.challenges },
+        { title: 'What I Learned', items: project.learnings }
+      ].filter(section => section.items.length > 0).map(section => (
+        <section key={section.title}>
+          <h2 className="mb-5 text-lg font-semibold text-white light:text-slate-900">{section.title}</h2>
+          <ul className="space-y-3 text-sm leading-7 text-slate-400 light:text-slate-600">
+            {section.items.map(item => <li key={item}>{item}</li>)}
           </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            Technical Decisions
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.technicalDecisions.map((item) => (
-              <li key={item} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            Build Highlights
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.highlights.map((highlight) => (
-              <li key={highlight} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {highlight}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            Outcomes
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.outcomes.map((outcome) => (
-              <li key={outcome} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {outcome}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            Challenges
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.challenges.map((challenge) => (
-              <li key={challenge} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {challenge}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="mb-6 border-b border-slate-800 light:border-slate-300 pb-4 text-sm font-mono uppercase tracking-widest text-teal-300 light:text-teal-700">
-            What I Learned
-          </h2>
-          <ul className="space-y-4 text-sm leading-7 text-slate-400 light:text-slate-600">
-            {project.learnings.map((learning) => (
-              <li key={learning} className="border-l border-slate-800 light:border-slate-300 pl-4">
-                {learning}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </section>
+      ))}
+      </div>
 
       <div className="flex flex-wrap gap-3">
         {project.github && (

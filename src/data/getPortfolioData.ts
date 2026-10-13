@@ -51,19 +51,13 @@ export function getPortfolioData(locale: Locale) {
   const t = translations[locale] ?? {};
 
   return {
-    profile: { ...profile, ...t.profile },
-    impactMetrics: impactMetrics.map((metric) => ({
-      ...metric,
-      ...t.impactMetrics?.[metric.label],
-    })),
+    profile: { ...profile, ...t.profile, role: profile.role, summary: profile.summary, graduation: profile.graduation },
+    impactMetrics,
     focusAreas: focusAreas.map((area) => ({
       ...area,
       ...t.focusAreas?.[area.label],
     })),
-    experience: experience.map((item) => ({
-      ...item,
-      ...t.experience?.[item.id],
-    })),
+    experience,
     coursework,
     projects: projects.map((project) => ({
       ...project,
@@ -71,13 +65,6 @@ export function getPortfolioData(locale: Locale) {
     })),
     certifications,
     technologies,
-    researchFocus: {
-      ...researchFocus,
-      ...t.researchFocus,
-      performance: researchFocus.performance.map((metric) => ({
-        ...metric,
-        ...t.researchFocus?.performance?.[metric.label],
-      })),
-    },
+    researchFocus,
   };
 }

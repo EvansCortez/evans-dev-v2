@@ -6,7 +6,7 @@ export default function StructuredData({ jobTitle }: { jobTitle: string }) {
     "@type": "Person",
     name: "Evans Cortez",
     url: siteUrl,
-    email: "mailto:evans.cortez23@stjohns.edu",
+    email: "mailto:evscortez1212@gmail.com",
     sameAs: [
       "https://github.com/EvansCortez",
       "https://linkedin.com/in/evans-cortez",
